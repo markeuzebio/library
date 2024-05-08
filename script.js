@@ -26,6 +26,6 @@ function showAllBooks() {
     });
 }
 
-addBookToLibrary();
+// addBookToLibrary();
 
 showAllBooks();
