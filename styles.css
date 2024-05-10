@@ -75,10 +75,15 @@ body {
 /* ----------- COSTUMIZE SIDEBAR  ----------- */
 
 nav {
+	position: relative;
 	padding: 20px;
 
 	background-color: rgb(240, 180, 160);
 	font-size: 1.5rem;
+}
+
+nav > form {
+	position: fixed;
 }
 
 fieldset:first-child > legend {
@@ -126,6 +131,8 @@ main {
 	display: flex;
 	flex-direction: column;
 
+	position: relative;
+
 	background-color: rgb(249, 115, 138);
 }
 
@@ -136,6 +143,8 @@ main {
 /* Style button that opens/closes sidebar */
 .btn-toggle-nav-sidebar {
 	align-self: flex-start;
+
+	position: fixed;
 	
 	border: none;
 	border-top-right-radius: 10px;
@@ -150,4 +159,32 @@ main {
 
 	cursor: pointer;
 }
+
+.card {
+	padding: 20px;
+
+	background-color: yellow;
+
+	border-radius: 12px;
+
+	text-align: center;
+}
+
+.card > p:not(:first-child) {
+	border-top: 1px solid black;
+}
+
+.card > p {
+	padding: 10px 0px;
+	font-size: 1.5rem;
+}
+
+.cards-container {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	gap: 50px;
+
+	padding: 50px;
+}
+
 /* ------------------------------------------ */
