@@ -160,7 +160,28 @@ main {
 	cursor: pointer;
 }
 
+/* Style button that removes a card */
+.btn-remove-card {
+	align-self: flex-end;
+
+	margin-bottom: 10px;
+
+	border: none;
+	border-radius: 50%;
+
+	padding: 5px 10px;
+
+	background-color: rgb(240, 221, 214);
+
+	font-size: 2rem;
+
+	cursor: pointer;
+}
+
 .card {
+	display: flex;
+	flex-direction: column;
+
 	padding: 20px;
 
 	background-color: yellow;
@@ -177,6 +198,12 @@ main {
 .card > p {
 	padding: 10px 0px;
 	font-size: 1.5rem;
+}
+
+.read-status:hover {
+	color: rgb(169, 164, 164);
+
+	cursor: pointer;
 }
 
 .cards-container {
