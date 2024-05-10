@@ -1,4 +1,4 @@
-const btn_show_hide_sidebar = document.querySelector('.btn-toggle-nav-sidebar');
+const btn_open_close_sidebar = document.querySelector('.btn-toggle-nav-sidebar');
 const nav_sidebar           = document.querySelector('nav.sidebar');
 const body                  = document.querySelector('body');
 const btn_register          = document.querySelector('button[name=btn_register]');
@@ -7,72 +7,80 @@ const form                  = document.querySelector('form');
 
 let book_counter_id = 0;
 
-btn_show_hide_sidebar.addEventListener('click', function () { 
+function openOrCloseSidebar(e) {
     nav_sidebar.classList.toggle('invisible');
     body.classList.toggle('change-body-to-grid');
 
     if(nav_sidebar.classList.contains('invisible'))
-        btn_show_hide_sidebar.textContent = '+';
+        e.target.textContent = '+';
     else
-        btn_show_hide_sidebar.textContent = '-';
-});
+        e.target.textContent = '-';
+}
 
-btn_register.addEventListener('click', function () {
-
+function createCardElement() {
     // If the form is not completed, a warning message is shown to user and nothing happens
     if(!form.checkValidity()) {
         form.reportValidity();
         return;
     }
 
+    // Get the content of form and put them inside variables
     const book_author  = document.querySelector('#book_author').value;
     const book_title   = document.querySelector('#book_title').value;
     const book_n_pages = document.querySelector('#book_n_pages').value;
     const book_is_read = document.querySelector("input[type='radio'][name='read']:checked").value;
 
-    const card         = document.createElement('div');
+    // Create the card
+    const card = document.createElement('div');
     card.setAttribute('data-book-id', book_counter_id);
     card.classList.add('card');
-
+    
+    // Create DOM elements that compose a card
     const btn_remove_card     = document.createElement('button');
     const card_author         = document.createElement('p');
     const card_title          = document.createElement('p');
     const card_n_pages        = document.createElement('p');
     const card_is_read        = document.createElement('p');
 
-    btn_remove_card.classList.add('btn-remove-card');
-    btn_remove_card.textContent = 'X';
-
-    btn_remove_card.addEventListener('click', function() {
-        removeBookFromLibrary(btn_remove_card.parentElement.getAttribute('data-book-id'));
-        btn_remove_card.parentElement.remove();
-    });
-
-    card_author.textContent = book_author;
-    card_title.textContent  = book_title;
+    // Add the content from form to DOM elements which represents card content
+    card_author.textContent   = book_author;
+    card_title.textContent    = book_title;
     card_n_pages.textContent  = book_n_pages;
     card_is_read.textContent  = book_is_read;
 
-    card_is_read.classList.add('read-status');
-
+    // Add event to 'read' status content on the card
+    card_is_read.classList.add('read-status');                  // When hover, change its color
     card_is_read.addEventListener('click', function() {
         if(card_is_read.textContent == 'Not read')
             card_is_read.textContent = 'Read';
         else
             card_is_read.textContent = 'Not read';
     });
-    
+
+    // Add style to button which removes the card
+    btn_remove_card.classList.add('btn-remove-card');
+    btn_remove_card.textContent = 'X';
+    // Event added to button to remove the card when it's clicked
+    btn_remove_card.addEventListener('click', function() {
+        removeBookFromLibrary(btn_remove_card.parentElement.getAttribute('data-book-id'));
+        btn_remove_card.parentElement.remove();
+    });
+
     card.appendChild(btn_remove_card);
     card.appendChild(card_author);
     card.appendChild(card_title);
     card.appendChild(card_n_pages);
     card.appendChild(card_is_read);
-    
+
     cards_container.appendChild(card);
 
+    // Add book registered logically on the webpage
     addBookToLibrary(book_title, book_author, book_n_pages, book_is_read, book_counter_id);
     book_counter_id++;
-});
+}
+
+btn_open_close_sidebar.addEventListener('click', openOrCloseSidebar);
+btn_register.addEventListener('click', createCardElement);
 
 const allBooks = [];
 
