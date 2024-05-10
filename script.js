@@ -1,3 +1,17 @@
+const btn_show_hide_sidebar = document.querySelector('.btn-toggle-nav-sidebar');
+const nav_sidebar = document.querySelector('nav.sidebar');
+const body = document.querySelector('body');
+
+btn_show_hide_sidebar.addEventListener('click', function () { 
+    nav_sidebar.classList.toggle('invisible');
+    body.classList.toggle('change-body-to-grid');
+
+    if(nav_sidebar.classList.contains('invisible'))
+        btn_show_hide_sidebar.textContent = '+';
+    else
+        btn_show_hide_sidebar.textContent = '-';
+});
+
 const allBooks = [];
 
 function Book(title, author, number_of_pages) {
