@@ -3,6 +3,7 @@ const nav_sidebar           = document.querySelector('nav.sidebar');
 const body                  = document.querySelector('body');
 const btn_register          = document.querySelector('button[name=btn_register]');
 const cards_container       = document.querySelector('.cards-container');
+const form                  = document.querySelector('form');
 
 btn_show_hide_sidebar.addEventListener('click', function () { 
     nav_sidebar.classList.toggle('invisible');
@@ -15,6 +16,13 @@ btn_show_hide_sidebar.addEventListener('click', function () {
 });
 
 btn_register.addEventListener('click', function () {
+    
+    // If the form is not completed, a warning message is shown to user and nothing happens
+    if(!form.checkValidity()) {
+        form.reportValidity();
+        return;
+    }
+
     const book_author   = document.querySelector('#book_author').value;
     const book_title   = document.querySelector('#book_title').value;
     const book_n_pages = document.querySelector('#book_n_pages').value;

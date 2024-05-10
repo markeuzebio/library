@@ -9,20 +9,20 @@
 </head>
 <body>
     <nav class="sidebar invisible">
-        <form action="contactform.php" method="get">
+        <form>
             <fieldset>
                 <legend>REGISTER YOUR BOOK</legend>
                 <div class="sidebar-container">
                     <label for="book_author">AUTHOR</label>
-                    <input id="book_author" type="text" name="author" placeholder="Marcus Aurelius">
+                    <input id="book_author" type="text" name="author" placeholder="Marcus Aurelius" required>
                 </div>
                 <div class="sidebar-container">
                     <label for="book_title">TITLE</label>
-                    <input id="book_title" type="text" name="title" placeholder="Meditations">
+                    <input id="book_title" type="text" name="title" placeholder="Meditations" required>
                 </div>
                 <div class="sidebar-container">
                     <label for="book_n_pages">NUMBER OF PAGES</label>
-                    <input id="book_n_pages" type="number" name="number_of_pages" placeholder="256">
+                    <input id="book_n_pages" type="number" name="number_of_pages" placeholder="256" required>
                 </div>
                 <fieldset>
                     <legend>Has the book been read?</legend>
