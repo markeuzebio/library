@@ -84,12 +84,15 @@ btn_register.addEventListener('click', createCardElement);
 
 const allBooks = [];
 
-function Book(title, author, number_of_pages, read, id) {
-    this.title = title;
-    this.author = author;
-    this.number_of_pages = number_of_pages;
-    this.read = read;
-    this.id = id;
+class Book {
+    constructor(title, author, number_of_pages, read, id)
+    {
+        this.title = title;
+        this.author = author;
+        this.number_of_pages = number_of_pages;
+        this.read = read;
+        this.id = id;
+    }
 }
 
 function addBookToLibrary(title, author, number_of_pages, read, id) {
